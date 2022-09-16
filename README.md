@@ -2,55 +2,71 @@
 
 Данный проект представляет собой API для приложения отзывов YamDB.
 
-## Как запустить проект:
+## Как развернуть и запустить проект в контейнере:
 
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git clone git@github.com:Kirill-Drozdov/api_yamdb.git
+git clone git@github.com:Kirill-Drozdov/infra_sp2.git
 ```
 
 ```
-cd api_yamdb
+cd infra_sp2
 ```
 
-Cоздать и активировать виртуальное окружение:
+В папке infra создать файл .env и заполнить его по образцу,
+используя свои данные для проекта:
 
 ```
-python3 -m venv env
+SECRET_KEY = 'your_secret_key_for_project'
+HOST_127 = '127.0.0.1'
+HOST_LOCAL = 'localhost'
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=database_name
+POSTGRES_USER=username
+POSTGRES_PASSWORD=password
+DB_HOST=db
+DB_PORT=5432
 ```
 
-```
-source env/bin/activate
-```
+Перейти в папку infra и запустить сборку контейнера:
 
 ```
-python3 -m pip install --upgrade pip
+cd infra
 ```
 
-Установить зависимости из файла requirements.txt:
+Далее все команды выполнять из текущей директории.
 
 ```
-pip install -r requirements.txt
+docker-compose up -d
 ```
 
 Выполнить миграции:
 
 ```
-python3 manage.py migrate
+docker-compose exec web python manage.py migrate
 ```
 
-Наполнить БД тестовыми данными:
+Создать суперпользователя:
 
 ```
-python3 manage.py load_csv
+docker-compose exec web python manage.py createsuperuser
 ```
 
-Запустить проект:
+Собрать статику в одну папку:
 
 ```
-python3 manage.py runserver
+docker-compose exec web python manage.py collectstatic
 ```
+
+Заполнить базу тестовыми данными:
+
+```
+docker-compose exec web python manage.py load_csv
+```
+
+Ваш проект запущен и готов к работе!
+
 
 ### Примеры запросов:
 
