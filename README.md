@@ -14,20 +14,9 @@ git clone git@github.com:Kirill-Drozdov/infra_sp2.git
 cd infra_sp2
 ```
 
-В папке infra создать файл .env и заполнить его по образцу,
+В папке infra создать файл .env и заполнить его по шаблону .env.template,
 используя свои данные для проекта:
 
-```
-SECRET_KEY = 'your_secret_key_for_project'
-HOST_127 = '127.0.0.1'
-HOST_LOCAL = 'localhost'
-DB_ENGINE=django.db.backends.postgresql
-DB_NAME=database_name
-POSTGRES_USER=username
-POSTGRES_PASSWORD=password
-DB_HOST=db
-DB_PORT=5432
-```
 
 Перейти в папку infra и запустить сборку контейнера:
 
