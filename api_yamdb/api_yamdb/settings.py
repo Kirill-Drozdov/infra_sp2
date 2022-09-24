@@ -14,6 +14,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     os.getenv('HOST_127', default=None),
     os.getenv('HOST_LOCAL', default='localhost'),
+    os.getenv('HOST_A', default='*'),
 ]
 
 INSTALLED_APPS = [
