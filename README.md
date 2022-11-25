@@ -45,7 +45,7 @@ docker-compose exec web python manage.py createsuperuser
 Собрать статику в одну папку:
 
 ```
-docker-compose exec web python manage.py collectstatic
+docker-compose exec web python manage.py collectstatic --no-input
 ```
 
 Заполнить базу тестовыми данными:
